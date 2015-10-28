@@ -1,0 +1,20 @@
+class Ambush2 : ZilchComponent
+{
+    function Initialize(init : CogInitializer)
+    {
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+        function OnCollisionStarted(event : CollisionEvent)
+    {
+ Console.WriteLine("WorkPLease");
+        this.Space.FindObjectByName("AsteroidD").ForceEffect.Active = true;
+        this.Space.FindObjectByName("AsteroidE").ForceEffect.Active = true;
+        this.Space.FindObjectByName("AsteroidF").ForceEffect.Active = true;
+    }
+}
+

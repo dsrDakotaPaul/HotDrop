@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "ObsticalDestroy",
+		uint64 ResourceId = 5637fabf6a71e534,
+	},
+},

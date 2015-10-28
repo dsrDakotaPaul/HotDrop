@@ -1,0 +1,8 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "CollitionReset",
+		uint64 ResourceId = 5619346f2cc489e4,
+	},
+},

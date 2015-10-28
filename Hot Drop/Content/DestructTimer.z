@@ -1,0 +1,19 @@
+class DestructTimer : ZilchComponent
+{
+    var Timer : Integer = 0;
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        Console.WriteLine(this.Timer);
+        this.Timer+=1;
+        if(this.Timer >= 15)
+        {
+            this.Owner.Destroy();
+            this.Timer = 0;
+        }
+    }
+}

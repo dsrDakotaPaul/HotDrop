@@ -1,0 +1,31 @@
+class FirePlasma : ZilchComponent
+{
+    [Property] var Speed : Real = 50;
+    var Direction : Real3 = Real3(0.0,0.0,0.0);
+
+    function Initialize(init : CogInitializer)
+    {
+        this.Direction = Real3(0, this.Speed, 0);
+        Zero.Connect(Zero.Keyboard, Events.KeyDown, this.OnKeyDown);
+        //Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+    }
+    
+    function OnKeyDown(event : KeyboardEvent)
+    {
+        if(event.Key == Keys.Space)
+        {
+            var spawnPosition = this.Owner.Transform.Translation;
+            spawnPosition.Y+=2;
+            var archetypeToSpawn = Archetype.Find("Plasma");
+            var createdPlasma = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
+            //Console.WriteLine(forward);
+            //Console.WriteLine(forward);
+            createdPlasma.RigidBody.Velocity = Real3(0.0,this.Speed,0.0);
+
+        }
+    }
+}

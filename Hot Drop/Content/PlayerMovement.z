@@ -1,0 +1,63 @@
+class PlayerMovement : ZilchComponent
+{
+ [Property] var Speed : Real = 0.3;
+ [Property] var MaxReverse : Real = 10;
+ [Property] var MaxForward : Real = 10;
+ [Property] var MaxStrafe : Real = 10;
+ var Direction : Real3 = Real3(0,0,0);
+ var TempX : Real = 0.0;
+ var TempY : Real = 0.0;
+    //Use direction in movement.
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        //When W key is down, object moves up.
+         if(Zero.Keyboard.KeyIsDown(Keys.W))
+         
+         {
+             if(this.TempY <= this.MaxForward)
+             {
+             this.TempY +=1;
+             this.Owner.RigidBody.Velocity = Real3(this.TempX,this.TempY,0.0);
+         }
+         }
+         
+         //When S key is down, object moves down.
+    if(Zero.Keyboard.KeyIsDown(Keys.S))
+    
+         {
+             if(this.TempY >= this.MaxReverse)
+             {
+             this.TempY -=1;
+             this.Owner.RigidBody.Velocity = Real3(this.TempX,this.TempY,0.0);
+            }
+            }
+         
+         //When A key is down, object moves left.
+         if(Zero.Keyboard.KeyIsDown(Keys.A))
+         
+         {
+            if(this.TempX >= -this.MaxStrafe)
+            {
+             this.TempX -=1;
+             this.Owner.RigidBody.Velocity = Real3(this.TempX,this.TempY,0.0);
+         }
+         }
+         
+         //When D key is down, object moves right.
+    if(Zero.Keyboard.KeyIsDown(Keys.D))
+         
+         {
+            if(this.TempX <= this.MaxStrafe)
+            {
+             this.TempX +=1;
+             this.Owner.RigidBody.Velocity = Real3(this.TempX,this.TempY,0.0);
+         }
+         }
+         
+         }
+}

@@ -1,0 +1,7 @@
+ContentLibrary = 
+{
+	string Name = "Hot Drop",
+	uint64 LibraryId = 561d0691d22b5a72,
+	string SourceControlType = "",
+	bool ReadOnly = false,
+},
